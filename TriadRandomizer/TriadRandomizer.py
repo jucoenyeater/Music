@@ -15,7 +15,7 @@ root = Tk()
 root.title("Random 3-Word Combination")
 
 # Create list of words to be combined
-list1 = ["A","A#","B","B#","C","C#","D","D#","E","F","F#","G","G#"]
+list1 = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 list2 = ["Root Position", "First Position", "Second Position"]
 list3 = ["Root Inversion", "First Inversion", "Second Inversion"]
 
@@ -41,9 +41,11 @@ is_running = False
 # Create an iterator for the word combinations
 combination_iter = iter(combination)
 
-# Create a label to hold the image
-image = PhotoImage(file = "image.png")
-image_label = Label(root, image=image)
+# =============================================================================
+# # Create a label to hold the image
+# image = PhotoImage(file = "image.png")
+# image_label = Label(root, image=image)
+# =============================================================================
 
 # Function to update label with a new word combination
 def update_label():
