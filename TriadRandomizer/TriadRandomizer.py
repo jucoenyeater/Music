@@ -19,6 +19,10 @@ list1 = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
 list2 = ["Root Position", "First Position", "Second Position"]
 list3 = ["Root Inversion", "First Inversion", "Second Inversion"]
 
+list1 = ["B"]
+list2 = list2
+list3 = ["Root Inversion"]
+
 # Creates all possible combination sof the words in the lists
 combination = list(itertools.product(list1, list2, list3))
 
@@ -31,7 +35,7 @@ label.pack()
 
 # Create the timer variable and entry widget
 timer_var = IntVar()
-timer_var.set(5)
+timer_var.set(30)
 timer_entry = Entry(root, textvariable=timer_var)
 timer_entry.pack()
 
@@ -46,6 +50,25 @@ combination_iter = iter(combination)
 # image = PhotoImage(file = "image.png")
 # image_label = Label(root, image=image)
 # =============================================================================
+
+# Create a variable to track if the result image should be visible
+result_visible = False
+
+# Create a function to toggle the visibility of the result image
+def toggle_result():
+    global result_visible
+    if result_visible:
+        result_button.config(text="Show Result")
+        result_visible = False
+        result_label.pack_forget()
+    else:
+        result_button.config("Hide Result")
+        result_visible = True
+        result_label.pack()
+        
+# Create the Rsults button to toggle the result image
+result_button = Button(root, text="Results", command=toggle_result)
+result_button.pack()
 
 # Function to update label with a new word combination
 def update_label():
@@ -78,6 +101,7 @@ def toggle_timer():
     else:
         start_stop_button.config(text="Stop")
         is_running = True
+        timer_var.set(int(timer_entry.get()))
         update_label()
     
 # Creat the start / stop button
